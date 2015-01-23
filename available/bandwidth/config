@@ -1,0 +1,40 @@
+## interval [seconds]: time between each `run`.
+## Required
+# interval = 1
+
+## jitter [seconds]: the max and min to randomly deviant for interval.
+## This is to help spread out `run` calls to prevent all scripts
+## from running at the same time.
+## `jitter` must be less than `interval`.
+## Example: 0.1 to run at a random time between 900 and 1100 milliseconds.
+## Default: 0
+# jitter = 0
+
+## count: the number of values to collect from `run` before calling `reduce`.
+## Must be greater than 0.
+## Default: 1
+# count = 1
+
+## timeout [seconds]: how long to wait before killing `run`, `reduce`, or `send`.
+## Default: (interval + jitter) * 2
+# timeout = 2
+
+
+## run_timeout [seconds]: how long to wait before killing `run`.
+## Overrides `timeout`.
+## Default: timeout
+# run_timeout = timeout
+
+## reduce_timeout [seconds]: how long to wait before killing `reduce`.
+## Overrides `timeout`.
+## Default: timeout
+# reduce_timeout = timeout
+
+## send_timeout [seconds]: how long to wait before killing `send`.
+## Overrides `timeout`.
+## Default: timeout
+# send_timeout = timeout
+
+## overrun [boolean]: call `run` again even if a previous `run` has not finished.
+## Default: false
+# overrun = false
