@@ -1,8 +1,8 @@
 # Intro
 
-djbmon (working title) is a UNIX-like system monitor with UNIX inspired configuration.
+djbmon (working name) is a UNIX-like system monitor with UNIX inspired configuration.
 
-djbmon is meant extremely flexible, reliable, reusable, and programming language agnostic.
+djbmon is meant extremely flexible, reliable, reusable, testable, and programming language agnostic.
 
 djbmon regularly runs a collection of asynchronous jobs.
 
@@ -12,9 +12,10 @@ and 1 configuration file (`config`)
 
 # Job Scripts
 
-Jobs emulate the following behavior (for count == 1):
+Jobs emulate the following behavior (for `count = 1`):
 
-    ./run | ./reduce | ./send "myjob"
+    $ cd myjob
+    $ ./run | ./reduce | ./send "myjob"
 
 Exit codes and `STDERR` of each of the scripts is logged by `djbmon`.
 
@@ -26,12 +27,14 @@ Exit codes and `STDERR` of each of the scripts is logged by `djbmon`.
 `run` is executed at a regular interval (`interval` in `config`).
 
 After `run` executes a number of times (`count` in `config`),
-the values are sent line delimited via `STDIN` to `reduce`.
+the values from `STDOUT` are sent line delimited to `STDIN` on `reduce`.
 
 ### Built-Ins (TODO)
 
 * `load`
 * `disk`
+* `battery`
+* `bandwidth`
 
 
 ## `reduce`
@@ -53,8 +56,7 @@ A noop `reduce` script would be symlink to `/bin/cat`.
 
 `send` reads from `STDOUT`
 
-`send` is meant as a means to upload values to remote services, although it could also be used
-to write to local log files.
+`send` is meant as a means to upload values to external other services.
 
 The name of the job is passed as an argument to `send`.
 
