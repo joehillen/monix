@@ -1,10 +1,10 @@
 # Intro
 
-djbmon (working name) is a UNIX-like system monitor with UNIX inspired configuration.
+monix is a UNIX-like system monitor with UNIX inspired configuration.
 
-djbmon is meant extremely flexible, reliable, reusable, testable, and programming language agnostic.
+monix is meant extremely flexible, reliable, reusable, testable, and programming language agnostic.
 
-djbmon regularly runs a collection of asynchronous jobs.
+monix regularly runs a collection of asynchronous jobs.
 
 A job is a directory that contains 3 scripts (`run`, `reduce`, and `send`)
 and 1 configuration file (`config`)
@@ -17,7 +17,7 @@ Jobs emulate the following behavior (for `count = 1`):
     $ cd myjob
     $ ./run | ./reduce | ./send "myjob"
 
-Exit codes and `STDERR` of each of the scripts is logged by `djbmon`.
+Exit codes and `STDERR` of each of the scripts is logged by `monix`.
 
 
 ## `run`
